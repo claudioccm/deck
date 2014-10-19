@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+h1 {
+  margin: 0; }
+
+.viewport {
+  width: 960px;
+  height: 1704px;
+  overflow: hidden;
+  background-color: rgba(255, 0, 0, 0.2); }
+
+.row {
+  display: block;
+  overflow: hidden; }
+
+.b-card {
+  height: 1704px;
+  width: 960px;
+  background-color: rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid #666;
+  float: left; }
+  .b-card h1 {
+    font-size: 72px; }
+  .b-card p {
+    font-size: 48px; }
+  .b-card.m-active h1 {
+    color: red; }
+
+.row-1 {
+  background-color: rgba(0, 255, 0, 0.2); }
+
+.row-2 {
+  background-color: rgba(0, 0, 255, 0.2); }
+
+.row-3 {
+  background-color: rgba(0, 255, 255, 0.2); }
+
+.controls {
+  text-align: center;
+  position: fixed;
+  bottom: 90px;
+  left: 320px; }
+  .controls .arrow {
+    font-size: 50px;
+    padding: 10px 20px;
+    border: 1px solid #666;
+    margin: 10px;
+    display: inline-block; }
