@@ -1,106 +1,146 @@
 $(document).ready(function() {
 
 var current_position = '1-1'; // Sets the current position variable
+var total_rows = getTotalRows();
+var max_columns = getMaxColumn();
+
+// Set the active card
 $('#'+current_position).addClass('m-active');
 
+// Set .content width
+var deck = $('.content');
+deck.width(max_columns * 960);
+
+
 // Gets the total number of rows
-var total_rows = $('.row').length;
+function getTotalRows() {
+	total_rows = $('.row').length;
+	return total_rows;
+}
 
-// Checks for the Max Length of Rows
-// var max = 0;
-// var content_width = $('.row').each(function() {
-// 	var cur = $(this).children().length;
+// Get the length of the longest row
+function getMaxColumn() {
+	var max = 0;	
 
-// 	if ( cur > max ) {
-// 		max = cur;
-// 	}
-// });
+	var content_width = $('.row').each(function() {
+		var cur = $(this).children().length;
+		if ( cur > max ) {
+			max = cur;
+		}
+	});
 
-// $('.content').width(max * 960);
+	return max;
+}
 
+function getCardCoords(id) {
+	var coords = {
+		'row': parseInt(id.slice(0,1)),
+		'col': parseInt(id.slice(-1))
+	}
+	return coords;
+}
+
+// $("#test").swipe( {
+//         //Generic swipe handler for all directions
+//         swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+//           $(this).text("You swiped " + direction );  
+//         },
+//         //Default is 75px, set to 0 for demo so any distance triggers swipe
+//          threshold:0
+//       });
 
 
 $('.right').click(function() {
-	// Gets the total number of columns in that row
-	var total_cols = $('.m-active').parent().children().length;
-	console.log('total columns ' + total_cols);
+	var active_card = $('.m-active');
+	var card = getCardCoords(active_card.attr('id'));
+	var target_col = card.col + 1;
+	var row_len = active_card.parent().children().length;
 
-	// Gets the position of the current card and converts them to INT
-	current_position = $('.m-active').attr('id');
-	var current_row = parseInt(current_position.slice(0,1));
-	var current_col = parseInt(current_position.slice(-1));
+	if ( target_col <= row_len ) {
+		var target_card = '#' + card.row + '-' + target_col;
+		$('.m-active').removeClass('m-active');
+		$(target_card).addClass('m-active');
 
-	// Check if it is the last column
-	if (current_col < total_cols) {
-		$('#' + current_position).removeClass('m-active');
-		var target = '#' + current_row + '-' + (current_col + 1);
-		$(this).attr('href', target);
-		$(target).addClass('m-active');	
+		$('.content').animate({'left': '-=960px'}, 0);	
 	} else {
-		console.log('Last Column!');
+		console.log('Last Card!')
 	}
+
+	console.log('Target Card: ' + target_card);	
 });
 
 $('.left').click(function() {
-	// Gets the position of the current card and converts them to INT
-	current_position = $('.m-active').attr('id');
-	var current_row = parseInt(current_position.slice(0,1));
-	var current_col = parseInt(current_position.slice(-1));
+	var active_card = $('.m-active');
+	var card = getCardCoords(active_card.attr('id'));
+	var target_col = card.col - 1;
+	var row_len = active_card.parent().children().length;
 
-	// Check if it is the first column
-	if (current_col > 1) {
-		$('#' + current_position).removeClass('m-active');
-		var target = '#' + current_row + '-' + (current_col - 1);
-		$(this).attr('href', target);
-		$(target).addClass('m-active');
+	if ( target_col >= 1 ) {
+		var target_card = '#' + card.row + '-' + target_col;
+		$('.m-active').removeClass('m-active');
+		$(target_card).addClass('m-active');
+
+		$('.content').animate({'left': '+=960px'}, 0);	
 	} else {
-		console.log('First Column!');
+		console.log('First Card!')
 	}
+
+	console.log('Target Card: ' + target_card);		
 });
 
 $('.down').click(function() {
-	// Gets the position of the current card and converts them to INT
-	current_position = $('.m-active').attr('id');
-	var current_row = parseInt(current_position.slice(0,1));
-	var current_col = parseInt(current_position.slice(-1));
+	var active_card = $('.m-active');
+	var card = getCardCoords(active_card.attr('id'));
+	var target_row = card.row + 1;
 
-	// Sets the target as the next row
-	var target = '#' + (current_row + 1) + '-' + current_col;
+	if ( target_row <= total_rows ) {
+		var target_card = '#' + target_row + '-1';
+		$('.m-active').removeClass('m-active');
+		$(target_card).addClass('m-active');
 
-	// Checks if it is NOT the last row
-	if (current_row < total_rows) {
-		$(this).attr('href', target);
-		$('#' + current_position).removeClass('m-active');
-		$(target).addClass('m-active');	
+		$('.content').animate({'top': '-=1704px', 'left': '0px'}, 0);	
 	} else {
-		console.log('Last Row!');
+		console.log('Last Row!')
 	}
+
+	console.log('Target Card: ' + target_card);
 });
 
 $('.up').click(function() {
-	// Gets the position of the current card and converts them to INT
-	current_position = $('.m-active').attr('id');
-	var current_row = parseInt(current_position.slice(0,1));
-	var current_col = parseInt(current_position.slice(-1));
+	var active_card = $('.m-active');
+	var card = getCardCoords(active_card.attr('id'));
+	var target_row = card.row - 1;
 
-	// Sets the target as the previous row
-	var target = '#' + (current_row - 1) + '-' + current_col;
+	if ( target_row >= 1 ) {
+		var target_card = '#' + target_row + '-1';
+		$('.m-active').removeClass('m-active');
+		$(target_card).addClass('m-active');
 
-	// Checks if it is NOT the first row
-	if ( current_row > 1 ) {
-		$('#' + current_position).removeClass('m-active');
-		$(this).attr('href', target);
-		$(target).addClass('m-active');	
+		$('.content').animate({'top': '+=1704px', 'left': '0px'}, 0);	
 	} else {
 		console.log('First Row!')
 	}
 
-
-	// Helper logs
-	// console.log('current_position: ' + current_position);
-	// console.log('target: ' + target);
-	// console.log('current_row: ' + current_row + ' current_col: ' + current_col);
+	console.log('Target Card: ' + target_card);
 });
 
 
+
 });
+
+// console.log('ROW LENGTH: ' + row_len);
+
+
+
+
+
+
+// $("#swipe").swipe({
+//   swipeLeft:function(event, direction, distance, duration, fingerCount) {
+//     //This only fires when the user swipes left
+//   }
+// });
+
+
+
+	
