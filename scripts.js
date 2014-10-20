@@ -40,17 +40,13 @@ function getCardCoords(id) {
 	return coords;
 }
 
-// $("#test").swipe( {
-//         //Generic swipe handler for all directions
-//         swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-//           $(this).text("You swiped " + direction );  
-//         },
-//         //Default is 75px, set to 0 for demo so any distance triggers swipe
-//          threshold:0
-//       });
+////////////////////
+var slides = jQuery('.b-card'),
+    i = 0;
 
-
-$('.right').click(function() {
+slides
+.on('swipeleft', function(e) {
+  slides.eq(i + 1).addClass('active');
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_col = card.col + 1;
@@ -67,9 +63,9 @@ $('.right').click(function() {
 	}
 
 	console.log('Target Card: ' + target_card);	
-});
-
-$('.left').click(function() {
+})
+.on('swiperight', function(e) {
+	slides.eq(i - 1).addClass('active');
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_col = card.col - 1;
@@ -85,10 +81,10 @@ $('.left').click(function() {
 		console.log('First Card!')
 	}
 
-	console.log('Target Card: ' + target_card);		
-});
-
-$('.down').click(function() {
+	console.log('Target Card: ' + target_card);	
+})
+.on('swipeup', function(e) {
+	slides.eq(i - 1).addClass('active');
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_row = card.row + 1;
@@ -104,9 +100,9 @@ $('.down').click(function() {
 	}
 
 	console.log('Target Card: ' + target_card);
-});
-
-$('.up').click(function() {
+})
+.on('swipedown', function(e) {
+	slides.eq(i - 1).addClass('active');
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_row = card.row - 1;
@@ -123,8 +119,6 @@ $('.up').click(function() {
 
 	console.log('Target Card: ' + target_card);
 });
-
-
 
 });
 
