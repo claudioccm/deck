@@ -41,16 +41,16 @@ function getCardCoords(id) {
 }
 
 ////////////////////
-var slides = jQuery('.b-card'),
-    i = 0;
+var slides = $$('.b-card');
 
-slides
-.on('swipeleft', function(e) {
-  slides.eq(i + 1).addClass('active');
+slides.swipeLeft(function() {
+  	
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_col = card.col + 1;
 	var row_len = active_card.parent().children().length;
+
+	$(this).addClass('active');
 
 	if ( target_col <= row_len ) {
 		var target_card = '#' + card.row + '-' + target_col;
@@ -64,12 +64,13 @@ slides
 
 	console.log('Target Card: ' + target_card);	
 })
-.on('swiperight', function(e) {
-	slides.eq(i - 1).addClass('active');
+
+.swipeRight(function() {
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_col = card.col - 1;
 	var row_len = active_card.parent().children().length;
+	$(this).addClass('active');
 
 	if ( target_col >= 1 ) {
 		var target_card = '#' + card.row + '-' + target_col;
@@ -83,8 +84,8 @@ slides
 
 	console.log('Target Card: ' + target_card);	
 })
-.on('swipeup', function(e) {
-	slides.eq(i - 1).addClass('active');
+.swipeUp(function() {
+	$(this).addClass('m-active');
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_row = card.row + 1;
@@ -101,12 +102,12 @@ slides
 
 	console.log('Target Card: ' + target_card);
 })
-.on('swipedown', function(e) {
-	slides.eq(i - 1).addClass('active');
+.swipeDown(function() {
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_row = card.row - 1;
 
+	$(this).addClass('active');
 	if ( target_row >= 1 ) {
 		var target_card = '#' + target_row + '-1';
 		$('.m-active').removeClass('m-active');
