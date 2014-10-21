@@ -6,8 +6,6 @@ h1 {
   margin: 0; }
 
 .viewport {
-  width: 960px;
-  height: 1704px;
   overflow: hidden;
   background-color: rgba(255, 0, 0, 0.2);
   position: relative; }

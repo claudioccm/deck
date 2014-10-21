@@ -1,8 +1,23 @@
 $(document).ready(function() {
 
+$(document).bind('touchmove', function(e) {
+    e.preventDefault();
+});
+
 var current_position = '1-1'; // Sets the current position variable
 var total_rows = getTotalRows();
 var max_columns = getMaxColumn();
+
+var viewport = {};
+viewport.height = $(window).height(); // returns height of browser viewport
+viewport.width = $(window).width(); // returns width of browser viewport
+console.log(viewport);
+
+$('.viewport').width(viewport.width).height(viewport.height); // Sets the .viewport element dimensions to the device dimensions
+
+
+
+
 
 // Set the active card
 $('#'+current_position).addClass('m-active');
@@ -41,9 +56,9 @@ function getCardCoords(id) {
 }
 
 ////////////////////
-var slides = $$('.b-card');
+var slide = $$('.m-active');
 
-slides.swipeLeft(function() {
+slide.swipeLeft(function() {
   	
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
@@ -63,9 +78,9 @@ slides.swipeLeft(function() {
 	}
 
 	console.log('Target Card: ' + target_card);	
-})
+});
 
-.swipeRight(function() {
+slide.swipeRight(function() {
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_col = card.col - 1;
@@ -83,8 +98,9 @@ slides.swipeLeft(function() {
 	}
 
 	console.log('Target Card: ' + target_card);	
-})
-.swipeUp(function() {
+});
+
+slide.swipeUp(function() {
 	$(this).addClass('m-active');
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
@@ -101,8 +117,9 @@ slides.swipeLeft(function() {
 	}
 
 	console.log('Target Card: ' + target_card);
-})
-.swipeDown(function() {
+});
+
+slide.swipeDown(function() {
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_row = card.row - 1;
