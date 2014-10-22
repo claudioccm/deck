@@ -9,17 +9,14 @@ var total_rows = getTotalRows();
 var max_columns = getMaxColumn();
 
 var viewport = {};
+
 viewport.height = $(window).height(); // returns height of browser viewport
 viewport.width = $(window).width(); // returns width of browser viewport
-// viewport.height = 667; // returns height of browser viewport
-// viewport.width = 375; // returns width of browser viewport
 console.log(viewport);
 
+
 $('.viewport').width(viewport.width).height(viewport.height); // Sets the .viewport element dimensions to the device dimensions
-
-
-
-
+$('.b-card').width(viewport.width - 87).height(viewport.height - 82); // Sets the .viewport element dimensions to the device dimensions
 
 // Set the active card
 $('#'+current_position).addClass('m-active');
@@ -56,6 +53,11 @@ function getCardCoords(id) {
 	}
 	return coords;
 }
+//////////////////////////////////////////////////
+//Testing the long swipe
+$$('.m-active').swipe(function(e){
+  console.log(e.currentTouch);
+});
 
 ////////////////////
 var slide = $$('.m-active');
