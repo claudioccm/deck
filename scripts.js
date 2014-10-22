@@ -12,11 +12,10 @@ var viewport = {};
 
 viewport.height = $(window).height(); // returns height of browser viewport
 viewport.width = $(window).width(); // returns width of browser viewport
-console.log(viewport);
-
 
 $('.viewport').width(viewport.width).height(viewport.height); // Sets the .viewport element dimensions to the device dimensions
-$('.b-card').width(viewport.width - 87).height(viewport.height - 82); // Sets the .viewport element dimensions to the device dimensions
+$('.b-card').width(viewport.width).height(viewport.height); // Sets the .viewport element dimensions to the device dimensions
+// $('.b-card').width(viewport.width - 7).height(viewport.height - 2); // Sets the .viewport element dimensions to the device dimensions
 
 // Set the active card
 $('#'+current_position).addClass('m-active');
@@ -55,72 +54,91 @@ function getCardCoords(id) {
 }
 //////////////////////////////////////////////////
 //Testing the long swipe
-$$('.m-active').swipe(function(e){
-  console.log(e.currentTouch);
-});
+// $$('.m-active').swipeLeft(function(e){
+//   console.log(e.iniTouch);
+//   console.log(e.currentTouch);
+// });
 
 ////////////////////
 var slide = $$('.m-active');
 
-slide.swipeLeft(function() {
+slide.swipeLeft(function(e) {
   	
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_col = card.col + 1;
 	var row_len = active_card.parent().children().length;
+	var swipe_length = e.iniTouch.x - e.currentTouch.x;
 
-	$(this).addClass('active');
+	// console.log(swipe_length);
 
-	if ( target_col <= row_len ) {
+	$(this).addClass('m-active');
+
+	if ( swipe_length > 250 ) {
+		$(this).addClass('m-flipped');
+	}
+
+	else if ( target_col <= row_len ) {
 		var target_card = '#' + card.row + '-' + target_col;
-		$('.m-active').removeClass('m-active');
+		active_card.removeClass('m-active m-flipped');
 		$(target_card).addClass('m-active');
 
-		$('.content').css({'left': '-=' + viewport.width}, 0);	
+		$('.content').css({'left': '-=' + viewport.width});
+
 	} else {
 		console.log('Last Card!')
 	}
 
-	console.log('Target Card: ' + target_card);	
+	// $(this).on('event', console.log(event));
+
+	// console.log('Target Card: ' + target_card);	
 });
 
-slide.swipeRight(function() {
+slide.swipeRight(function(e) {
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_col = card.col - 1;
 	var row_len = active_card.parent().children().length;
-	$(this).addClass('active');
+	var swipe_length = e.iniTouch.x - e.currentTouch.x;
+	console.log(swipe_length);
 
-	if ( target_col >= 1 ) {
+	$(this).addClass('m-active');
+
+	if (swipe_length < -250) {
+		$(this).removeClass('m-flipped');
+	}
+
+	else if ( target_col >= 1 ) {
 		var target_card = '#' + card.row + '-' + target_col;
-		$('.m-active').removeClass('m-active');
+		active_card.removeClass('m-active m-flipped');
 		$(target_card).addClass('m-active');
 
-		$('.content').css({'left': '+=' + viewport.width}, 0);	
+		$('.content').css({'left': '+=' + viewport.width});	
 	} else {
 		console.log('First Card!')
 	}
 
-	console.log('Target Card: ' + target_card);	
+	// console.log('Target Card: ' + target_card);	
 });
 
 slide.swipeUp(function() {
-	$(this).addClass('m-active');
 	var active_card = $('.m-active');
 	var card = getCardCoords(active_card.attr('id'));
 	var target_row = card.row + 1;
 
+	$(this).addClass('m-active');
+
 	if ( target_row <= total_rows ) {
 		var target_card = '#' + target_row + '-1';
-		$('.m-active').removeClass('m-active');
+		active_card.removeClass('m-active m-flipped');
 		$(target_card).addClass('m-active');
 
-		$('.content').css({'top': '-=' + viewport.height, 'left': '0px'}, 0);	
+		$('.content').css({'top': '-=' + viewport.height, 'left':'0'});	
 	} else {
-		console.log('Last Row!')
+		console.log('Last Row!');
 	}
 
-	console.log('Target Card: ' + target_card);
+	// console.log('Target Card: ' + target_card);
 });
 
 slide.swipeDown(function() {
@@ -128,19 +146,24 @@ slide.swipeDown(function() {
 	var card = getCardCoords(active_card.attr('id'));
 	var target_row = card.row - 1;
 
-	$(this).addClass('active');
+	$(this).addClass('m-active');
+
 	if ( target_row >= 1 ) {
 		var target_card = '#' + target_row + '-1';
-		$('.m-active').removeClass('m-active');
+		active_card.removeClass('m-active m-flipped');
 		$(target_card).addClass('m-active');
 
-		$('.content').css({'top': '+=' + viewport.height, 'left': '0px'}, 0);	
+		$('.content').css({'top': '+=' + viewport.height, 'left':'0'});	
 	} else {
-		console.log('First Row!')
+		console.log('First Row!');
 	}
 
-	console.log('Target Card: ' + target_card);
+	// console.log('Target Card: ' + target_card);
 });
+
+$('.flip').click(function(){
+	$(this).parent().parent().parent().toggleClass('m-flipped');
+	});
 
 });
 
@@ -150,12 +173,6 @@ slide.swipeDown(function() {
 
 
 
-
-// $("#swipe").swipe({
-//   swipeLeft:function(event, direction, distance, duration, fingerCount) {
-//     //This only fires when the user swipes left
-//   }
-// });
 
 
 

@@ -24,38 +24,62 @@ h1 {
   overflow: hidden; }
 
 .b-card {
-  background-color: rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
-  padding: 40px;
-  border: 1px solid #666;
-  float: left;
-  border-left: 6px solid #333; }
+  float: left; }
+  .b-card .e-card-content > div {
+    background-color: #efefef;
+    border: 1px solid #666;
+    border-left: 6px solid #333;
+    padding: 40px;
+    box-sizing: border-box; }
   .b-card h1 {
     font-size: 48px;
     font-weight: 100; }
   .b-card p {
     font-size: 16px; }
   .b-card.m-active h1 {
-    color: #333; }
+    color: #c60018; }
 
-.row-1 .b-card {
+.row-1 .b-card .e-card-content > div {
   border-left-color: #c60018; }
 
-.row-2 .b-card {
+.row-2 .b-card .e-card-content > div {
   border-left-color: #3fa9f5; }
 
-.row-3 .b-card {
+.row-3 .b-card .e-card-content > div {
   border-left-color: #337c09; }
 
-.controls {
-  text-align: center;
-  position: fixed;
-  z-index: 1000;
-  bottom: 90px;
-  left: 320px; }
-  .controls .arrow {
-    font-size: 50px;
-    padding: 10px 20px;
-    border: 1px solid #666;
-    margin: 10px;
-    display: inline-block; }
+/* entire container, keeps perspective */
+.b-card {
+  perspective: 600; }
+
+.e-card-content, .e-front, .e-back {
+  width: 100%;
+  height: 100%; }
+
+.m-flipped .e-card-content {
+  transform: rotateY(180deg); }
+
+/* flip speed goes here */
+.e-card-content {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative; }
+
+/* hide back of pane during swap */
+.e-front, .e-back {
+  background-color: #efefef;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+/* front pane, placed above back */
+.e-front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg); }
+
+/* back, initially hidden pane */
+.e-back {
+  transform: rotateY(180deg); }
