@@ -21,8 +21,6 @@ h1 {
   overflow: hidden; }
 
 .b-card {
-  height: 1704px;
-  width: 960px;
   background-color: rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   padding: 20px;
