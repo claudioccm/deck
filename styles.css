@@ -51,6 +51,8 @@ h1 {
 
 /* entire container, keeps perspective */
 .b-card {
+  -webkit-perspective: 600;
+  -moz-perspective: 600;
   perspective: 600; }
 
 .e-card-content, .e-front, .e-back {
@@ -58,17 +60,25 @@ h1 {
   height: 100%; }
 
 .m-flipped .e-card-content {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
   transform: rotateY(180deg); }
 
 /* flip speed goes here */
 .e-card-content {
   transition: 0.6s;
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
   position: relative; }
 
 /* hide back of pane during swap */
 .e-front, .e-back {
   background-color: #efefef;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
   backface-visibility: hidden;
   position: absolute;
   top: 0;
@@ -78,8 +88,12 @@ h1 {
 .e-front {
   z-index: 2;
   /* for firefox 31 */
-  transform: rotateY(0deg); }
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg); }
 
 /* back, initially hidden pane */
 .e-back {
-  transform: rotateY(180deg); }
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg); }

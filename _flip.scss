@@ -1,42 +1,7 @@
-// .b-card { 
-//   position: relative;
-//   perspective: 600px;
-// }
-
-// .e-card-content {
-//   width: 100%;
-//   height: 100%;
-//   position: absolute;
-//   transform-style: preserve-3d;
-//   transition: transform .6s;
-// }
-
-// .e-card-content > div {
-//   display: block;
-//   position: absolute;
-//   width: 100%;
-//   height: 100%;
-//   backface-visibility: hidden;
-//   padding: 40px;
-//   box-sizing: border-box;
-// }
-
-// .e-card-content .e-front {
-// 	background-color: $bg-gray;
-// }
-
-// .e-card-content .e-back {
-// 	background-color: $bg-gray;
-// 	transform: rotateY( 180deg );
-// }
-
-// .m-flipped .e-card-content {
-//   transform: rotateY( -180deg );
-// }
-
-
 /* entire container, keeps perspective */
 .b-card {
+	-webkit-perspective: 600;
+	-moz-perspective: 600;
 	perspective: 600;
 }
 
@@ -46,13 +11,19 @@
 }
 
 .m-flipped  .e-card-content {
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
 	transform: rotateY(180deg);
 }
 
 /* flip speed goes here */
 .e-card-content {
 	transition: 0.6s;
+	-webkit-transition: 0.6s;
+	-moz-transition: 0.6s;
 	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
 
 	position: relative;
 }
@@ -60,6 +31,8 @@
 /* hide back of pane during swap */
 .e-front, .e-back {
 	background-color: $bg-gray;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
 	backface-visibility: hidden;
 
 	position: absolute;
@@ -72,9 +45,16 @@
 	z-index: 2;
 	/* for firefox 31 */
 	transform: rotateY(0deg);
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
 }
 
 /* back, initially hidden pane */
 .e-back {
 	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
 }
+
+//  Try this later
+// https://developer.apple.com/library/safari/samplecode/CardFlip/Listings/CardFlip_css.html#//apple_ref/doc/uid/DTS40007646-CardFlip_css-DontLinkElementID_3
