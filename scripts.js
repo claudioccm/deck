@@ -11,19 +11,22 @@ var max_columns = getMaxColumn();
 var viewport = {};
 viewport.height = $(window).height(); // returns height of browser viewport
 viewport.width = $(window).width(); // returns width of browser viewport
-// viewport.height = 904; 
-// viewport.width = 562; 
+// viewport.height = 667; // returns height of browser viewport
+// viewport.width = 375; // returns width of browser viewport
 console.log(viewport);
 
 $('.viewport').width(viewport.width).height(viewport.height); // Sets the .viewport element dimensions to the device dimensions
-$('.b-card').width(viewport.width).height(viewport.height - 40); // Sets the .b-card element dimensions to the device dimensions
+
+
+
+
 
 // Set the active card
-$('#' + current_position).addClass('m-active');
+$('#'+current_position).addClass('m-active');
 
 // Set .content width
 var deck = $('.content');
-deck.width(max_columns * (viewport.width + 100));
+deck.width(max_columns * viewport.width);
 
 
 // Gets the total number of rows
@@ -71,7 +74,7 @@ slide.swipeLeft(function() {
 		$('.m-active').removeClass('m-active');
 		$(target_card).addClass('m-active');
 
-		$('.content').css({'left': '-=' + viewport.width + 'px'});	
+		$('.content').css({'left': '-=' + viewport.width}, 0);	
 	} else {
 		console.log('Last Card!')
 	}
@@ -91,7 +94,7 @@ slide.swipeRight(function() {
 		$('.m-active').removeClass('m-active');
 		$(target_card).addClass('m-active');
 
-		$('.content').css({'left': '+=' + viewport.width + 'px' });	
+		$('.content').css({'left': '+=' + viewport.width}, 0);	
 	} else {
 		console.log('First Card!')
 	}
@@ -110,7 +113,7 @@ slide.swipeUp(function() {
 		$('.m-active').removeClass('m-active');
 		$(target_card).addClass('m-active');
 
-		$('.content').css({'top': '-=' + viewport.height + 'px', 'left': '0px'});	
+		$('.content').css({'top': '-=' + viewport.height, 'left': '0px'}, 0);	
 	} else {
 		console.log('Last Row!')
 	}
@@ -129,7 +132,7 @@ slide.swipeDown(function() {
 		$('.m-active').removeClass('m-active');
 		$(target_card).addClass('m-active');
 
-		$('.content').css({'top': '+=' + viewport.height + 'px', 'left': '0px'});	
+		$('.content').css({'top': '+=' + viewport.height, 'left': '0px'}, 0);	
 	} else {
 		console.log('First Row!')
 	}
@@ -140,6 +143,17 @@ slide.swipeDown(function() {
 });
 
 // console.log('ROW LENGTH: ' + row_len);
+
+
+
+
+
+
+// $("#swipe").swipe({
+//   swipeLeft:function(event, direction, distance, duration, fingerCount) {
+//     //This only fires when the user swipes left
+//   }
+// });
 
 
 

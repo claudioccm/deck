@@ -1,6 +1,16 @@
+$blue: #3FA9F5;
+$red: #C60018;
+$green: #337C09;
+
+
+
 body {
 	margin: 0;
 	padding: 0;
+	font-family: sans-serif;
+	font-weight: 200;
+	line-height: 1.4;
+	font-size: 16px;
 }
 
 h1 {
@@ -8,8 +18,10 @@ h1 {
 }
 
 .viewport {
+	width: 960px;
+	height: 1704px;
 	overflow: hidden;
-	background-color: rgba(255, 0, 0, 0.2);
+	// background-color: rgba(255, 0, 0, 0.2);
 	position: relative;
 }
 
@@ -26,24 +38,26 @@ h1 {
 }
 
 .b-card {
-	// height: 1704px;
-	// width: 960px;
-	background-color: rgba(0,0,0,0.1);
+	height: 1576px;
+	width: 980px;
+	background-color: rgba(0, 0, 0, 0.05);
 	box-sizing: border-box;
-	padding: 20px;
+	padding: 40px;
 	border: 1px solid #666;
 	float: left;
+	border-left: 6px solid #333;
 	
 	h1 {
-		font-size: 72px;
+		font-size: 92px;
+		font-weight: 100;
 	}
 	p {
-		font-size: 48px;
+		
 	}
 
 	&.m-active {
 		h1 {
-			color: red;
+			color: #333;
 		}
 	}
 }
@@ -52,9 +66,9 @@ h1 {
 
 
 // Auxiliary Styles
-.row-1 { background-color: rgba(0, 255, 0, 0.2); }
-.row-2 { background-color: rgba(0, 0, 255, 0.2); }
-.row-3 { background-color: rgba(0, 255, 255, 0.2); }
+.row-1 .b-card { border-left-color: $red;}
+.row-2 .b-card { border-left-color: $blue; }
+.row-3 .b-card { border-left-color: $green; }
 
 .controls {
 	text-align: center;

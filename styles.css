@@ -1,13 +1,18 @@
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: sans-serif;
+  font-weight: 200;
+  line-height: 1.4;
+  font-size: 16px; }
 
 h1 {
   margin: 0; }
 
 .viewport {
+  width: 960px;
+  height: 1704px;
   overflow: hidden;
-  background-color: rgba(255, 0, 0, 0.2);
   position: relative; }
 
 .content {
@@ -21,26 +26,28 @@ h1 {
   overflow: hidden; }
 
 .b-card {
-  background-color: rgba(0, 0, 0, 0.1);
+  height: 1576px;
+  width: 980px;
+  background-color: rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
-  padding: 20px;
+  padding: 40px;
   border: 1px solid #666;
-  float: left; }
+  float: left;
+  border-left: 6px solid #333; }
   .b-card h1 {
-    font-size: 72px; }
-  .b-card p {
-    font-size: 48px; }
+    font-size: 92px;
+    font-weight: 100; }
   .b-card.m-active h1 {
-    color: red; }
+    color: #333; }
 
-.row-1 {
-  background-color: rgba(0, 255, 0, 0.2); }
+.row-1 .b-card {
+  border-left-color: #c60018; }
 
-.row-2 {
-  background-color: rgba(0, 0, 255, 0.2); }
+.row-2 .b-card {
+  border-left-color: #3fa9f5; }
 
-.row-3 {
-  background-color: rgba(0, 255, 255, 0.2); }
+.row-3 .b-card {
+  border-left-color: #337c09; }
 
 .controls {
   text-align: center;
