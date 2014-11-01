@@ -15,7 +15,6 @@ viewport.width = $(window).width(); // returns width of browser viewport
 
 $('.viewport').width(viewport.width).height(viewport.height); // Sets the .viewport element dimensions to the device dimensions
 $('.b-card').width(viewport.width).height(viewport.height); // Sets the .viewport element dimensions to the device dimensions
-// $('.b-card').width(viewport.width - 7).height(viewport.height - 2); // Sets the .viewport element dimensions to the device dimensions
 
 // Set the active card
 $('#'+current_position).addClass('m-active');
@@ -53,13 +52,8 @@ function getCardCoords(id) {
 	return coords;
 }
 //////////////////////////////////////////////////
-//Testing the long swipe
-// $$('.m-active').swipeLeft(function(e){
-//   console.log(e.iniTouch);
-//   console.log(e.currentTouch);
-// });
 
-////////////////////
+//////////////////////////////////////////////////
 var slide = $$('.m-active');
 
 slide.swipeLeft(function(e) {
@@ -74,8 +68,8 @@ slide.swipeLeft(function(e) {
 
 	$(this).addClass('m-active');
 
-	if ( swipe_length > 250 ) {
-		$(this).addClass('m-flipped');
+	if ( swipe_length > 200 ) {
+		$(this).toggleClass('m-flipped');
 	}
 
 	else if ( target_col <= row_len ) {
@@ -104,8 +98,8 @@ slide.swipeRight(function(e) {
 
 	$(this).addClass('m-active');
 
-	if (swipe_length < -250) {
-		$(this).removeClass('m-flipped');
+	if (swipe_length < -200) {
+		$(this).toggleClass('m-flipped');
 	}
 
 	else if ( target_col >= 1 ) {
@@ -161,11 +155,9 @@ slide.swipeDown(function() {
 	// console.log('Target Card: ' + target_card);
 });
 
-$('.flip').click(function(){
-	$(this).parent().parent().parent().toggleClass('m-flipped');
-	});
 
-});
+
+}); // Closes the Document.ready function
 
 // console.log('ROW LENGTH: ' + row_len);
 
