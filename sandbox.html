@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">  
+	<title>Deck - 0.1</title>
+	<script src="vendor/angular.min.js"></script>
+	<script src="js/card-generator.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="scss/styles.css">
+</head>
+<body ng-app="cardsApp">
+	<div class="viewport" >
+		<div class="content" >
+			<div class="row row-1" ng-controller="designersController">
+				
+				<div id="1-{{$index + 1}}" class="col-1 b-card" ng-repeat="card in designers">
+					<div class="e-card-content">
+						<div class="e-front">
+							<h1>{{card.title}}</h1>
+							<h2>{{card.subtitle}}</h2>
+							<h3>FRONT</h3>
+							<p>{{card.text}}</p>
+						</div>
+						<div class="e-back">
+							<h1>Card 1-1</h1>
+							<h2>BACK</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nihil aperiam nesciunt a iusto sapiente distinctio natus laboriosam hic.</p>		
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nihil aperiam nesciunt a iusto sapiente distinctio natus laboriosam hic.</p>		
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nihil aperiam nesciunt a iusto sapiente distinctio natus laboriosam hic.</p>
+						</div>
+					</div>
+				</div>
+			</div>	
+				
+			<div class="row row-2" ng-controller="restaurantsController">
+				<div id="2-{{$index + 1}}" class="col-1 b-card" ng-repeat="card in restaurants">
+					<div class="e-card-content">
+						<div class="e-front">
+							<h1>{{card.title}}</h1>
+							<h2>{{card.subtitle}}</h2>
+							<h3>FRONT</h3>
+							<p>{{card.text}}</p>
+						</div>
+						<div class="e-back">
+							<h1>Card 2-1</h1>
+							<h2>BACK</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nihil aperiam nesciunt a iusto sapiente distinctio natus laboriosam hic.</p>		
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nihil aperiam nesciunt a iusto sapiente distinctio natus laboriosam hic.</p>		
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nihil aperiam nesciunt a iusto sapiente distinctio natus laboriosam hic.</p>		
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row row-3">
+				<div id="3-1" class="col-1 b-card">
+					<div class="e-card-content">
+						<div class="e-front">
+							<h1>Card 3-1</h1>
+							<h2>FRONT</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nihil aperiam nesciunt a iusto sapiente distinctio natus laboriosam hic.</p>		
+						</div>
+						<div class="e-back">
+							<h1>Card 3-1</h1>
+							<h2>BACK</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nihil aperiam nesciunt a iusto sapiente distinctio natus laboriosam hic.</p>		
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nihil aperiam nesciunt a iusto sapiente distinctio natus laboriosam hic.</p>		
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nihil aperiam nesciunt a iusto sapiente distinctio natus laboriosam hic.</p>		
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="vendor/jquery.min.js"></script>
+	<script src="vendor/quo.js"></script>
+	<script src="js/scripts.js"></script>
+</body>
+</html>
