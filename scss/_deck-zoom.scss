@@ -1,0 +1,13 @@
+.m-zoom-out {
+	overflow: scroll;
+
+	.content {
+		-moz-transform: scale(0.3, 0.3); /* Moz-browsers */
+	  zoom: 0.3; /* Other non-webkit browsers */
+	  zoom: 30%; /* Webkit browsers */
+	}
+
+	.b-card {
+		overflow: hidden;
+	}
+}

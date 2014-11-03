@@ -1,6 +1,6 @@
 // Controler to loop the cards from the DataBase
 
-var cardsApp = angular.module('cardsApp', []);
+var cardsApp = angular.module('cardsApp', ["slugifier"]);
 
 cardsApp.controller('cardsController', function ($scope) {
   $scope.cards = cards;
@@ -16,7 +16,7 @@ cardsApp.controller('cardsController', function ($scope) {
 // JSON DataBase
 var cards = [
 [
-  {	"title": "Claudio Mendonca",
+  {	"title": "Cláudio Mendonça",
 	  "subtitle": "Graphic Designer",
 	  "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus nihil aperiam nesciunt a iusto sapiente distinctio natus laboriosam hic."
   },

@@ -2,6 +2,12 @@ $blue: #3FA9F5;
 $red: #C60018;
 $green: #337C09;
 $bg-gray: #efefef;
+$gray_80: rgba(0,0,0,0.8);
+$gray_60: rgba(0,0,0,0.6);
+$gray_40: rgba(0,0,0,0.4);
+$gray_20: rgba(0,0,0,0.2);
+$gray_10: rgba(0,0,0,0.1);
+
 
 
 
@@ -31,6 +37,9 @@ h1 {
 	left: 0;
 	top: 0;
 	transition: all 0.5s ease;
+	-moz-transform: scale(1, 1); /* Moz-browsers */
+  zoom: 1; /* Other non-webkit browsers */
+  zoom: 100%; /* Webkit browsers */
 }
 
 .row {
@@ -38,45 +47,14 @@ h1 {
 	overflow: hidden;
 }
 
-.b-card {
-	// width: 375px;
-	// height: 667px;
-	box-sizing: border-box;
-	float: left;
-	
-	.e-card-content > div {
-		background-color: $bg-gray;
-		border: 1px solid #666;
-		border-left: 6px solid #333;
-		padding: 40px;
-		box-sizing: border-box;
-	}
-
-	h1 {
-		font-size: 48px;
-		font-weight: 100;
-	}
-	p {
-		font-size: 16px;
-	}
-
-	&.m-active {
-		h1 {
-			color: $red;
-		}
-	}
-
-	&.m-flipped {
-		// background-color: red !important;
-	}
-}
 
 
 
 
-// Auxiliary Styles
-.row-1 .b-card .e-card-content > div { border-left-color: $red;}
-.row-2 .b-card .e-card-content > div { border-left-color: $blue; }
-.row-3 .b-card .e-card-content > div { border-left-color: $green; }
 
-@import "flip";
+
+
+
+@import "card";
+@import "card-flip";
+@import "deck-zoom";

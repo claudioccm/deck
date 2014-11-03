@@ -17,7 +17,13 @@ h1 {
   position: absolute;
   left: 0;
   top: 0;
-  transition: all 0.5s ease; }
+  transition: all 0.5s ease;
+  -moz-transform: scale(1, 1);
+  /* Moz-browsers */
+  zoom: 1;
+  /* Other non-webkit browsers */
+  zoom: 100%;
+  /* Webkit browsers */ }
 
 .row {
   display: block;
@@ -25,11 +31,13 @@ h1 {
 
 .b-card {
   box-sizing: border-box;
-  float: left; }
+  float: left;
+  margin: 0 20px 20px 0;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1); }
   .b-card .e-card-content > div {
     background-color: #efefef;
-    border: 1px solid #666;
-    border-left: 6px solid #333;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-left: 6px solid rgba(0, 0, 0, 0.8);
     padding: 40px;
     box-sizing: border-box; }
   .b-card h1 {
@@ -97,3 +105,15 @@ h1 {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg); }
+
+.m-zoom-out {
+  overflow: scroll; }
+  .m-zoom-out .content {
+    -moz-transform: scale(0.3, 0.3);
+    /* Moz-browsers */
+    zoom: 0.3;
+    /* Other non-webkit browsers */
+    zoom: 30%;
+    /* Webkit browsers */ }
+  .m-zoom-out .b-card {
+    overflow: hidden; }

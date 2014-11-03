@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">  
 	<title>Deck - 0.1</title>
 	<script src="vendor/angular.min.js"></script>
+	<script src="vendor/angular-slugify.js"></script>
 	<script src="js/card-generator.js"></script>
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="scss/styles.css">
@@ -13,7 +14,7 @@
 	<div class="viewport" >
 		<div class="content" ng-controller="cardsController">
 			<div class="row row-{{$index + 1}}" ng-repeat="row in cards">
-				<div id="{{$parent.$index + 1}}-{{$index + 1}}" class="col-{{$index + 1}} b-card" ng-repeat="card in cards[$index]">
+				<div id="{{card.title | slugify}}" class="col-{{$index + 1}} b-card coord-{{$parent.$index + 1}}-{{$index + 1}}" data-coord="{{$parent.$index + 1}}-{{$index + 1}}" ng-repeat="card in cards[$index]">
 					<div class="e-card-content">
 						<div class="e-front">
 							<h1>{{card.title}}</h1>
@@ -35,6 +36,6 @@
 		</div>
 	<script src="vendor/jquery.min.js"></script>
 	<script src="vendor/quo.js"></script>
-	<script src="js/scripts.js"></script>
+	<script src="js/gestures.js"></script>
 </body>
 </html>

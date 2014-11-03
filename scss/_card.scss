@@ -1,0 +1,39 @@
+.b-card {
+	// width: 375px;
+	// height: 667px;
+	box-sizing: border-box;
+	float: left;
+	margin: 0 20px 20px 0;
+	box-shadow: 10px 10px 10px $gray_10;
+	
+	.e-card-content > div {
+		background-color: $bg-gray;
+		border: 1px solid $gray_40;
+		border-left: 6px solid $gray_80;
+		padding: 40px;
+		box-sizing: border-box;
+	}
+
+	h1 {
+		font-size: 48px;
+		font-weight: 100;
+	}
+	p {
+		font-size: 16px;
+	}
+
+	&.m-active {
+		h1 {
+			color: $red;
+		}
+	}
+
+	&.m-flipped {
+		// background-color: red !important;
+	}
+}
+
+// Auxiliary Styles
+.row-1 .b-card .e-card-content > div { border-left-color: $red;}
+.row-2 .b-card .e-card-content > div { border-left-color: $blue; }
+.row-3 .b-card .e-card-content > div { border-left-color: $green; }
