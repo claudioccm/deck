@@ -4,7 +4,7 @@ $(document).ready(function() {
 //     e.preventDefault();
 // });
 
-var current_position = '1-1'; // Sets the current position variable
+var current_position = '1-0'; // Sets the current position variable
 var total_rows = getTotalRows();
 var max_columns = getMaxColumn();
 

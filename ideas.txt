@@ -1,38 +1,33 @@
-================
-  Main Product
-================
+**Main Product**
 - Angular based application.
 - Add, Edit and Delete cards
 - Firebase for prototype
-
-=================
-  Side products
-=================
-- Wordpress theme?
-- Ghost Theme?
-- Tumblr Theme?
-- Framework agnostic?
-
-=============
-  API Ideas
-=============
+ 
+**API Ideas**
 
 Main Modules
 
-	Navigation
-	Uses quo.js to manage gestures
+Navigation
+Uses quo.js to manage gestures
 
-	Card Generator
-	Uses Angular to generate the cards from a nested array JSON.
-	[
-		[{a:1,b:1},{a:1,b:1}],
-		[{a:1,b:1},{a:1,b:1}]
-	], 
-	[
-		[{a:1,b:1},{a:1,b:1}],
-		[{a:1,b:1},{a:1,b:1}]
-	]
+Card Generator
+Uses Angular to generate the cards from a nested array JSON.
+[
+	[{a:1,b:1},{a:1,b:1}],
+	[{a:1,b:1},{a:1,b:1}]
+], 
+[
+	[{a:1,b:1},{a:1,b:1}],
+	[{a:1,b:1},{a:1,b:1}]
+]
 
-	Uses Angular Slugify to add id's to each card based on the {{card.title}}
+Uses Angular-Slugify service to add id's to each card based on the {{card.title}}. This will be used to track analytics for each card.
 
-	
+
+**Side products**
+- Wordpress theme?
+- Tumblr Theme?
+- Ghost Theme?
+- Framework agnostic?
+
+These products could be very good for publicity and easy adoption.
