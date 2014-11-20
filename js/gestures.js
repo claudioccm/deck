@@ -85,7 +85,7 @@ slide.swipeLeft(function(e) {
 		$(this).toggleClass('m-flipped');
 	}
 
-	else if ( target_col <= row_len ) {
+	else if ( target_col < row_len ) {
 		var target_card = '.coord-' + card.row + '-' + target_col;
 		active_card.removeClass('m-active m-flipped');
 		$(target_card).addClass('m-active');
@@ -136,7 +136,7 @@ slide.swipeUp(function() {
 	$(this).addClass('m-active');
 
 	if ( target_row <= total_rows ) {
-		var target_card = '.coord-' + target_row + '-1';
+		var target_card = '.coord-' + target_row + '-0';
 		active_card.removeClass('m-active m-flipped');
 		$(target_card).addClass('m-active');
 
@@ -156,7 +156,7 @@ slide.swipeDown(function() {
 	$(this).addClass('m-active');
 
 	if ( target_row >= 1 ) {
-		var target_card = '.coord-' + target_row + '-1';
+		var target_card = '.coord-' + target_row + '-0';
 		active_card.removeClass('m-active m-flipped');
 		$(target_card).addClass('m-active');
 
